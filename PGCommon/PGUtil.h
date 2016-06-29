@@ -31,4 +31,6 @@
 
 #import "PGPinyin.h"
 
+#import "PGBaseObj.h"
+
 #endif

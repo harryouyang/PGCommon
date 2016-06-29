@@ -104,5 +104,13 @@
     return [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:self].length;
 }
 
+#pragma mark -
++ (NSDate *)getPriousorLaterDateFromDate:(NSDate *)date withMonth:(int)month
+{
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setMonth:month];
+    NSDate *mDate = [[NSCalendar currentCalendar] dateByAddingComponents:comps toDate:date options:0];
+    return mDate;
+}
 
 @end

@@ -243,7 +243,7 @@ FUNEXIT:
         return NO;
     
 	NSRegularExpression *regularexpression = [[NSRegularExpression alloc]
-											  initWithPattern:@"^[\\+-]?(?:|0|[1-9]\\d{0,})(?:\\.\\d*)?$"
+											  initWithPattern:@"^[\\+-]?(?:|0|[0-9]\\d{0,})(?:\\.\\d*)?$"
 											  options:NSRegularExpressionCaseInsensitive
 											  error:nil];
 	NSUInteger numberofMatch = [regularexpression numberOfMatchesInString:str
@@ -560,7 +560,7 @@ const int checktable[] = { 1, 0, 10, 9, 8, 7, 6, 5, 4, 3, 2 };//校验值对应�
             ];
 }
 
-+ (NSString *)jsonStringWithYLObj:(PGBaseObj *)obj
++ (NSString *)jsonStringWithPGObj:(PGBaseObj *)obj
 {
     if(obj != nil && [obj respondsToSelector:@selector(objectToJsonString)])
     {
@@ -637,7 +637,7 @@ const int checktable[] = { 1, 0, 10, 9, 8, 7, 6, 5, 4, 3, 2 };//校验值对应�
         value = [NSString jsonStringWithNumber:object];
     }else if([object isKindOfClass:[PGBaseObj class]])
     {
-        value = [NSString jsonStringWithYLObj:object];
+        value = [NSString jsonStringWithPGObj:object];
     }
     return value;
 }
@@ -718,6 +718,7 @@ const int checktable[] = { 1, 0, 10, 9, 8, 7, 6, 5, 4, 3, 2 };//校验值对应�
         result = [PGGTMBase64 stringByEncodingData:data];
     }
     
+    free(dataOut);
     return result;
 }
 
@@ -780,7 +781,7 @@ const int checktable[] = { 1, 0, 10, 9, 8, 7, 6, 5, 4, 3, 2 };//校验值对应�
     }
     
     free(buffer);
-    return cleartext;
+    return [cleartext autorelease];
 }
 
 //nsdata转成16进制字符串
@@ -841,7 +842,7 @@ const int checktable[] = { 1, 0, 10, 9, 8, 7, 6, 5, 4, 3, 2 };//校验值对应�
     }
     
     NSData *newData = [[NSData alloc] initWithBytes:bytes length:hexString.length/2];
-    return newData;
+    return [newData autorelease];
 }
 
 + (NSString *)parseByte2HexString:(Byte *) bytes
@@ -861,12 +862,12 @@ const int checktable[] = { 1, 0, 10, 9, 8, 7, 6, 5, 4, 3, 2 };//校验值对应�
             i++;
         }
     }
-    return hexStr;
+    return [hexStr autorelease];
 }
 
 + (NSString *)parseByteArray2HexString:(Byte[]) bytes
 {
-    NSMutableString *hexStr = [[NSMutableString alloc]init];
+    NSMutableString *hexStr = [[[NSMutableString alloc]init] autorelease];
     int i = 0;
     if(bytes)
     {

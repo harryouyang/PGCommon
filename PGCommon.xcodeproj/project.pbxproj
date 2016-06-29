@@ -26,6 +26,9 @@
 		1167A0771BC8F9C000766C67 /* PGGTMBase64.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1167A0731BC8F9B900766C67 /* PGGTMBase64.h */; };
 		1167A0781BC8F9C100766C67 /* PGGTMDefines.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1167A0751BC8F9B900766C67 /* PGGTMDefines.h */; };
 		1167A0941BC9008C00766C67 /* PGFoundationMacro.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1167A0791BC8FA1C00766C67 /* PGFoundationMacro.h */; };
+		117A7DA11D23606A003843A9 /* PGObjectExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 117A7DA01D23606A003843A9 /* PGObjectExtend.m */; };
+		117A7DA21D236071003843A9 /* PGDecode.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 117A7D9E1D236061003843A9 /* PGDecode.h */; };
+		117A7DA31D236074003843A9 /* PGObjectExtend.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 117A7D9F1D23606A003843A9 /* PGObjectExtend.h */; };
 		11CB67DB1BCF929800AB2B14 /* PGPinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CB67DA1BCF929800AB2B14 /* PGPinyin.m */; };
 		11CB67DC1BCF937000AB2B14 /* PGPinyin.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 11CB67D91BCF929800AB2B14 /* PGPinyin.h */; };
 /* End PBXBuildFile section */
@@ -41,6 +44,8 @@
 				1167A0781BC8F9C100766C67 /* PGGTMDefines.h in CopyFiles */,
 				1118DE151C2A87AF0038FC81 /* PGBaseObj.h in CopyFiles */,
 				1167A0771BC8F9C000766C67 /* PGGTMBase64.h in CopyFiles */,
+				117A7DA31D236074003843A9 /* PGObjectExtend.h in CopyFiles */,
+				117A7DA21D236071003843A9 /* PGDecode.h in CopyFiles */,
 				11CB67DC1BCF937000AB2B14 /* PGPinyin.h in CopyFiles */,
 				1167A0941BC9008C00766C67 /* PGFoundationMacro.h in CopyFiles */,
 				1167A06B1BC8F95100766C67 /* PGFileManager.h in CopyFiles */,
@@ -75,6 +80,9 @@
 		1167A0741BC8F9B900766C67 /* PGGTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGGTMBase64.m; sourceTree = "<group>"; };
 		1167A0751BC8F9B900766C67 /* PGGTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGGTMDefines.h; sourceTree = "<group>"; };
 		1167A0791BC8FA1C00766C67 /* PGFoundationMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFoundationMacro.h; sourceTree = "<group>"; };
+		117A7D9E1D236061003843A9 /* PGDecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGDecode.h; sourceTree = "<group>"; };
+		117A7D9F1D23606A003843A9 /* PGObjectExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGObjectExtend.h; sourceTree = "<group>"; };
+		117A7DA01D23606A003843A9 /* PGObjectExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGObjectExtend.m; sourceTree = "<group>"; };
 		11CB67D91BCF929800AB2B14 /* PGPinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPinyin.h; sourceTree = "<group>"; };
 		11CB67DA1BCF929800AB2B14 /* PGPinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPinyin.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +117,7 @@
 		1167A04C1BC8F7AF00766C67 /* PGCommon */ = {
 			isa = PBXGroup;
 			children = (
+				117A7D9E1D236061003843A9 /* PGDecode.h */,
 				1167A0791BC8FA1C00766C67 /* PGFoundationMacro.h */,
 				1167A0721BC8F9B900766C67 /* PGGTMBase64 */,
 				1167A0561BC8F93800766C67 /* extend */,
@@ -128,6 +137,8 @@
 		1167A0561BC8F93800766C67 /* extend */ = {
 			isa = PBXGroup;
 			children = (
+				117A7D9F1D23606A003843A9 /* PGObjectExtend.h */,
+				117A7DA01D23606A003843A9 /* PGObjectExtend.m */,
 				1167A0571BC8F93800766C67 /* PGDateExtend.h */,
 				1167A0581BC8F93800766C67 /* PGDateExtend.m */,
 				1167A0591BC8F93800766C67 /* PGDeviceExtend.h */,
@@ -214,7 +225,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "lipo -create \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/libPGCommon.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/libPGCommon.a\" -output \"${SRCROOT}/OutPut/${CONFIGURATION}/PGCommon.a\"";
+			shellScript = "#lipo -create \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/libPGCommon.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/libPGCommon.a\" -output \"${SRCROOT}/OutPut/${CONFIGURATION}/PGCommon.a\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -230,6 +241,7 @@
 				11CB67DB1BCF929800AB2B14 /* PGPinyin.m in Sources */,
 				1167A0681BC8F93800766C67 /* PGFileManager.m in Sources */,
 				1167A0651BC8F93800766C67 /* PGDeviceExtend.m in Sources */,
+				117A7DA11D23606A003843A9 /* PGObjectExtend.m in Sources */,
 				1167A0661BC8F93800766C67 /* PGDictionaryExtent.m in Sources */,
 				1167A0641BC8F93800766C67 /* PGDateExtend.m in Sources */,
 			);
