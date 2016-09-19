@@ -36,3 +36,12 @@ typedef enum dictionType
 - (NSString *)getStringValueForKey:(NSString *)key defaultValue:(NSString *)defaultValue;
 
 @end
+
+#pragma mark -
+@interface NSDictionary (LogHelper)
+
+#if DEBUG
+- (NSString *)descriptionWithLocale:(nullable id)locale;
+#endif
+
+@end
